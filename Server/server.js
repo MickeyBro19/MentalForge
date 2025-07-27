@@ -12,5 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/tasks", require("./routes/taskRoute"));
+app.use("/api/users", require("./routes/userRoute"));
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
