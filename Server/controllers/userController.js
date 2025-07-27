@@ -60,7 +60,12 @@ const loginUser = asyncHandler(async (req, res) => {
 
 //get user
 const getUser = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "Get User" });
+    const {_id,name,email}=await User.findById(req.user._id)
+  res.status(200).json({
+    id:_id,
+    name,    
+    email,
+   });
 });
 
 module.exports = {
