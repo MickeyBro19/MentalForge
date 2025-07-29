@@ -1,8 +1,3 @@
-Here you go — a clean, professional, **copy-ready `README.md`** file for your **MentalForge** project, no emojis included:
-
----
-
-```markdown
 # MentalForge
 
 **Your mental productivity cockpit.**  
