@@ -1,44 +1,44 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import DashboardCarousel from "../components/DashboardCarousal";
 
 const Home = () => {
   const { user } = useSelector((state) => state.auth);
 
   return (
-    <div className="bg-gradient-to-br from-indigo-100 via-white to-indigo-50 min-h-screen">
+    <div className="bg-gradient-to-br from-indigo-200 via-white to-blue-200 min-h-screen">
       {/* Hero Section */}
-      <section className="text-center py-24 px-4">
-        <h1 className="text-5xl font-extrabold text-indigo-700 leading-tight mb-4 animate-fade-in">
+      <section className="text-center py-24 px-4 max-w-6xl mx-auto">
+        <h1 className="text-5xl font-extrabold text-indigo-700 mb-4 tracking-tight leading-tight">
           Welcome to <span className="text-indigo-500">MentalForge</span>
         </h1>
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-10 animate-fade-in delay-100">
-          Your mental productivity cockpit — organize tasks, track your moods,
-          and reflect meaningfully.
+        <p className="text-gray-600 text-lg max-w-xl mx-auto mb-10">
+          Your all-in-one productivity cockpit — crush tasks, track moods, reflect better.
         </p>
 
         {!user ? (
-          <div className="space-x-4 animate-fade-in delay-200">
+          <div className="space-x-4">
             <Link
               to="/register"
-              className="bg-indigo-600 text-white px-6 py-3 rounded-full font-medium hover:bg-indigo-700 transition duration-300"
+              className="bg-indigo-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-700 transition"
             >
               Get Started
             </Link>
             <Link
               to="/login"
-              className="border border-indigo-600 text-indigo-600 px-6 py-3 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition duration-300"
+              className="border border-indigo-600 text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-indigo-600 hover:text-white transition"
             >
               Login
             </Link>
           </div>
         ) : (
-          <div className="animate-fade-in delay-200">
+          <div>
             <h2 className="text-xl font-semibold text-green-700 mb-4">
               Hello, {user.name.split(" ")[0]} 👋
             </h2>
             <Link
               to="/dashboard"
-              className="bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-700 transition duration-300"
+              className="bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-700 transition"
             >
               Go to Dashboard
             </Link>
@@ -48,79 +48,46 @@ const Home = () => {
 
       {/* Feature Highlights */}
       <section className="py-20 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-indigo-700 mb-12 animate-fade-in">
+        <h2 className="text-3xl font-bold text-center text-indigo-700 mb-12">
           What You Can Do on{" "}
           <span className="text-indigo-500">MentalForge</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <FeatureCard
-            icon="📝"
-            title="Reflect & Journal"
-            color="indigo"
-            description="Pen down your thoughts, reflect on emotions, and build mental clarity."
-          />
-          <FeatureCard
-            icon="📊"
-            title="Track Your Moods"
-            color="pink"
-            description="Log your emotional state and discover hidden patterns in your mind."
-          />
-          <FeatureCard
-            icon="✅"
-            title="Crush Your Tasks"
-            color="green"
-            description="Break goals into actions. Stay organized and win the day."
-          />
+          {features.map((feature) => (
+            <FeatureCard key={feature.title} {...feature} />
+          ))}
         </div>
       </section>
 
-      {/* Live Preview */}
-      {/* <section className="py-20 px-6 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-indigo-700 mb-6">
-          Sneak Peek into Your Dashboard
-        </h2>
-        <p className="text-center text-gray-600 mb-10 max-w-xl mx-auto">
-          Here's how your productivity cockpit looks in action. Simple. Focused. Effective.
-        </p>
-        <img
-          src="/dashboard-preview.png" // <-- add your image in public/
-          alt="Dashboard Preview"
-          className="rounded-xl border shadow-lg"
-        />
-      </section> */}
+      {/* Dashboard Screenshots Carousel */}
+      <section className="py-20 px-4 bg-white">
+        
+        <DashboardCarousel />
+      </section>
 
       {/* Why MentalForge Section */}
       <section className="py-20 bg-indigo-50">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-indigo-700 mb-10">
+          <h2 className="text-3xl font-bold text-center text-indigo-700 mb-12">
             Why Choose <span className="text-indigo-500">MentalForge</span>?
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <WhyCard
-              title="💡 Built for Clarity"
-              desc="Discover patterns, reflect better, and focus without clutter."
-            />
-            <WhyCard
-              title="⚡ Lightning Fast"
-              desc="Optimized MERN stack architecture — no lag, no delay."
-            />
-            <WhyCard
-              title="🧠 Mental-First Design"
-              desc="Built for your cognitive flow, not corporate checklists."
-            />
+          <div className="grid md:grid-cols-3 gap-8">
+            {whyCards.map((card) => (
+              <WhyCard key={card.title} {...card} />
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Footer */}
       {!user && (
-        <div className="mt-16 text-center animate-fade-in pb-12">
-          <p className="text-lg text-gray-700 mb-4">
+        <div className="text-center py-16">
+          <p className="text-lg text-gray-700 mb-6">
             Ready to forge a more mindful and productive you?
           </p>
           <Link
             to="/register"
-            className="inline-block bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-700 transition duration-300"
+            className="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-700 transition"
           >
             Get Started for Free
           </Link>
@@ -131,7 +98,7 @@ const Home = () => {
       {!user && (
         <Link
           to="/register"
-          className="fixed bottom-5 right-5 bg-indigo-600 text-white px-5 py-3 rounded-full font-semibold shadow-lg hover:bg-indigo-700 transition"
+          className="fixed bottom-6 right-6 bg-indigo-600 text-white px-5 py-3 rounded-full font-semibold shadow-xl hover:bg-indigo-700 transition z-50"
         >
           Try Now
         </Link>
@@ -140,26 +107,56 @@ const Home = () => {
   );
 };
 
-// FeatureCard Component
-const FeatureCard = ({ icon, title, description, color }) => {
-  return (
-    <div className="bg-white bg-opacity-70 backdrop-blur-lg border border-gray-200 rounded-xl shadow-lg p-6 hover:scale-[1.03] transform transition duration-300 ease-in-out">
-      <div
-        className={`text-5xl mb-4 bg-${color}-100 p-4 rounded-full w-fit mx-auto text-${color}-600 shadow-sm`}
-      >
-        {icon}
-      </div>
-      <h3 className={`text-xl font-bold text-center text-${color}-700 mb-2`}>
-        {title}
-      </h3>
-      <p className="text-gray-600 text-center">{description}</p>
-    </div>
-  );
-};
+// Feature Highlights
+const features = [
+  {
+    icon: "📝",
+    title: "Reflect & Journal",
+    color: "indigo",
+    description: "Pen down thoughts, reflect emotionally, and gain clarity.",
+  },
+  {
+    icon: "📊",
+    title: "Track Moods",
+    color: "pink",
+    description: "Record daily emotions and discover hidden mental patterns.",
+  },
+  {
+    icon: "✅",
+    title: "Crush Tasks",
+    color: "green",
+    description: "Break down goals into actions. Execute with clarity.",
+  },
+];
 
-// WhyCard Component
+const FeatureCard = ({ icon, title, description, color }) => (
+  <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition">
+    <div className={`text-5xl bg-${color}-100 text-${color}-600 rounded-full w-20 h-20 mx-auto flex items-center justify-center shadow mb-4`}>
+      {icon}
+    </div>
+    <h3 className={`text-xl font-bold text-${color}-700 mb-2`}>{title}</h3>
+    <p className="text-gray-600">{description}</p>
+  </div>
+);
+
+// Why MentalForge
+const whyCards = [
+  {
+    title: "💡 Built for Clarity",
+    desc: "Discover patterns, reflect deeper, and eliminate clutter.",
+  },
+  {
+    title: "⚡ Lightning Fast",
+    desc: "Snappy, reactive, and beautifully optimized MERN stack.",
+  },
+  {
+    title: "🧠 Mental-First Design",
+    desc: "Intuitive workflows designed for your real brain, not corporate checkboxes.",
+  },
+];
+
 const WhyCard = ({ title, desc }) => (
-  <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+  <div className="bg-white p-6 rounded-xl shadow border border-gray-100 hover:shadow-lg transition">
     <h3 className="text-lg font-semibold text-indigo-600 mb-2">{title}</h3>
     <p className="text-gray-600">{desc}</p>
   </div>
