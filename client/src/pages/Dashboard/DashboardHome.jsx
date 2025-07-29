@@ -12,7 +12,7 @@ const DashboardHome = () => {
     dispatch(getTasks());
     dispatch(getJournals());
     dispatch(getMoods());
-  }, []);
+  }, [dispatch]);
 
   const moodEmojiMap = {
     happy: "😊",
