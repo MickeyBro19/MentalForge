@@ -13,7 +13,8 @@ const Home = () => {
           Welcome to <span className="text-indigo-500">MentalForge</span>
         </h1>
         <p className="text-gray-600 text-lg max-w-xl mx-auto mb-10">
-          Your all-in-one productivity cockpit — crush tasks, track moods, reflect better.
+          Your all-in-one productivity cockpit — crush tasks, track moods,
+          reflect better.
         </p>
 
         {!user ? (
@@ -61,7 +62,6 @@ const Home = () => {
 
       {/* Dashboard Screenshots Carousel */}
       <section className="py-20 px-4 bg-white">
-        
         <DashboardCarousel />
       </section>
 
@@ -75,6 +75,45 @@ const Home = () => {
             {whyCards.map((card) => (
               <WhyCard key={card.title} {...card} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Future Updates Section */}
+      <section className="py-20 px-6 bg-white/70 backdrop-blur-lg border-t border-gray-200">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-indigo-700 mb-6">
+            🛠️ Future Enhancements
+          </h2>
+          <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
+            MentalForge is just getting started. Here are some exciting updates
+            planned for future releases.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <UpdateCard
+              title="🔐 OAuth Login"
+              description="Allow users to securely log in using Google, GitHub, and other identity providers."
+            />
+            <UpdateCard
+              title="📆 Calendar Integration"
+              description="Sync your task deadlines and journal logs with a visual calendar view."
+            />
+            <UpdateCard
+              title="📱 Mobile App (React Native)"
+              description="Bring MentalForge to your fingertips with a dedicated mobile app."
+            />
+            <UpdateCard
+              title="🔔 Notifications"
+              description="Set daily reminders for journaling, mood check-ins, and task goals."
+            />
+            <UpdateCard
+              title="📈 Insights & Analytics"
+              description="Visualize your productivity and emotional trends over time."
+            />
+            <UpdateCard
+              title="🌙 Dark Mode"
+              description="A clean, eye-friendly dark theme for your late-night reflections."
+            />
           </div>
         </div>
       </section>
@@ -131,7 +170,9 @@ const features = [
 
 const FeatureCard = ({ icon, title, description, color }) => (
   <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition">
-    <div className={`text-5xl bg-${color}-100 text-${color}-600 rounded-full w-20 h-20 mx-auto flex items-center justify-center shadow mb-4`}>
+    <div
+      className={`text-5xl bg-${color}-100 text-${color}-600 rounded-full w-20 h-20 mx-auto flex items-center justify-center shadow mb-4`}
+    >
       {icon}
     </div>
     <h3 className={`text-xl font-bold text-${color}-700 mb-2`}>{title}</h3>
@@ -159,6 +200,13 @@ const WhyCard = ({ title, desc }) => (
   <div className="bg-white p-6 rounded-xl shadow border border-gray-100 hover:shadow-lg transition">
     <h3 className="text-lg font-semibold text-indigo-600 mb-2">{title}</h3>
     <p className="text-gray-600">{desc}</p>
+  </div>
+);
+
+const UpdateCard = ({ title, description }) => (
+  <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition border border-gray-100 text-left">
+    <h3 className="text-lg font-semibold text-indigo-700 mb-2">{title}</h3>
+    <p className="text-gray-600">{description}</p>
   </div>
 );
 

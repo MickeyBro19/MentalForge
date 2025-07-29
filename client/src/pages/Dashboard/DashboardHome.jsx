@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getTasks } from "../../features/task/taskSlice";
+import { getJournals } from "../../features/journal/journalSlice";
+import { getMoods } from "../../features/mood/moodSlice";
+import { useEffect } from "react";
 
 const DashboardHome = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTasks());
+    dispatch(getJournals());
+    dispatch(getMoods());
+  }, []);
+
   const moodEmojiMap = {
     happy: "😊",
     sad: "😢",
@@ -95,7 +107,8 @@ const DashboardHome = () => {
                   {moodSummary.mood}
                 </h3>
                 <p className="text-xs text-gray-500">
-                  {moodSummary.count} out of {moodSummary.total} entries were {moodSummary.mood}.
+                  {moodSummary.count} out of {moodSummary.total} entries were{" "}
+                  {moodSummary.mood}.
                 </p>
               </div>
             </div>
