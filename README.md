@@ -6,7 +6,7 @@ Organize tasks, track your mood, and reflect with daily journaling — all in on
 ---
 
 ## Live Demo  
-[Visit MentalForge](https://your-deployment-link.com)
+[Visit MentalForge](Coming Soon..)
 
 ---
 
@@ -26,7 +26,7 @@ Organize tasks, track your mood, and reflect with daily journaling — all in on
 
 | Frontend       | Backend        | Database       | Authentication |
 |----------------|----------------|----------------|----------------|
-| React (Vite)   | Node.js, Express | MongoDB (Mongoose) | JWT *(OAuth planned)* |
+| React (Vite), React-Redux, Tailwind, Axios   | Node.js, Express | MongoDB (Mongoose) | JWT *(OAuth planned)* |
 
 ---
 
