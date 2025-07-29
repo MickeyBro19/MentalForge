@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTasks, reset } from "../features/task/taskSlice";
-import TaskForm from "../components/TaskForm";
-import TaskItem from "../components/TaskItem";
+import { getTasks, reset } from "../../features/task/taskSlice";
+import TaskForm from "../../components/TaskForm";
+import TaskItem from "../../components/TaskItem";
 
-const Dashboard = () => {
+const TaskDashboard = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
@@ -47,4 +47,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default TaskDashboard;

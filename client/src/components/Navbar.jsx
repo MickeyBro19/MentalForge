@@ -21,7 +21,7 @@ const Navbar = () => {
           to="/"
           className="text-2xl font-bold text-indigo-600 tracking-tight"
         >
-          ⚙️ MentalForge
+          🧠 MentalForge
         </Link>
 
         <div className="space-x-6 flex items-center">
